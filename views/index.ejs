@@ -1,0 +1,49 @@
+<!Doctype html>
+<html lang="en">
+<head>
+  <title>Contact List App - MEAN</title>
+  <!-- CSS links -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+  <!-- JavaScripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
+  <script src="/javascripts/controller.js"></script>
+</head>
+<body ng-app="ContactApp" ng-controller="AppCtrl">
+<div class="container">
+  <div class="row">
+    <script type="text/ng-template" id="/home.html">
+    <h1>Contact List</h1>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Number</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><input class="form-control" type="text" placeholder="Name" ng-model="name"></td>
+        <td><input class="form-control" type="text" placeholder="Email" ng-model="email"></td>
+        <td><input class="form-control" type="text" placeholder="Number" ng-model="number"></td>
+        <td><button class="btn btn-primary" type="submit" ng-click="addContact()">Add Contact</button></td>
+      </tr>
+      <tr ng-repeat="contact in contactlist | orderBy:'name'">
+        <td>{{contact.name}}</td>
+        <td>{{contact.email}}</td>
+        <td>{{contact.number}}</td>
+        <td><button class="btn btn-xs btn-danger" ng-click="removeList(contact._id)">Remove</button></td>
+        <td><button class="btn btn-xs btn-warning" ng-click="edit(contact._id)">Edit</button></td>
+      </tr>
+      </tbody>
+    </table>
+    </script>
+    <ui-view></ui-view>
+
+  </div>
+</div>
+</body>
+</html>
